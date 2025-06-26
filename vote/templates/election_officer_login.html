@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Election Officer Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/manager_login.css' %}">
+    </head>
+    <body>
+        <form method="POST" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="form">
+                <div class="title">Election Officer</div>
+                <div class="subtitle">Login</div>
+
+                <!-- Username Field -->
+                <div class="input-container ic1">
+                    <input class="input" type="text" name="username" id="username" placeholder="" required />
+                    <div class="cut"></div>
+                    <label for="username" class="placeholder">Username</label>
+                </div>
+                <span id="username-error" class="error-message"></span>
+
+                <!-- Password Field -->
+                <div class="input-container ic2">
+                    <input class="input" type="password" name="password" id="password" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="password" class="placeholder">Password</label>
+                </div>
+                <span id="password-error" class="error-message"></span>
+
+                <!-- Server-side Error Message -->
+                {% if error %}
+                    <p class="error-message">{{ error }}</p>
+                {% endif %}
+
+                <button type="submit" class="submit">Submit</button>
+
+                
+                <p class="info-text">Back to  
+                    <a href="{% url 'index' %}">Home</a>
+                </p>
+            </div>
+        </form>
+
+        <!-- JavaScript Validation -->
+        <script>
+            function validateForm() {
+                let username = document.getElementById("username").value.trim();
+                let password = document.getElementById("password").value.trim();
+                let valid = true;
+
+                // Clear previous errors
+                document.getElementById("username-error").innerText = "";
+                document.getElementById("password-error").innerText = "";
+
+                // Username validation
+                if (username === "") {
+                    document.getElementById("username-error").innerText = "Username is required.";
+                    valid = false;
+                }
+
+                // Password validation
+                if (password === "") {
+                    document.getElementById("password-error").innerText = "Password is required.";
+                    valid = false;
+                } else if (password.length < 8) {
+                    document.getElementById("password-error").innerText = "Password must be at least 8 characters.";
+                    valid = false;
+                }
+
+                return valid;
+            }
+        </script>
+
+        <style>
+            .error-message {
+                color: red;
+                font-size: 14px;
+                margin-top: 5px;
+                display: block;
+                font-family: sans-serif;
+            }
+
+            .info-text {
+                font-family: sans-serif;
+                margin-top: 10px;
+                color: white;
+                font-weight: bold;
+            }
+
+            .info-text a {
+                text-decoration: none;
+                color: white;
+            }
+        </style>
+    </body>
+</html>

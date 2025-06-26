@@ -1,0 +1,502 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Votesphere</title>
+    <!--/google-fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!--//google-fonts -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="#">
+                        <span class="sublog">vote</span>Sphere
+                    </a></h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href={% url 'index' %}>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link" href="#help">Guide</a>
+                        </li>
+                       
+                       
+
+                    </ul>
+                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                        <li class="nav-item" title="Search"><a>
+                                
+                        <li class="nav-item me-lg-3"><a href="#signin" class="phone-btn btn btn-primary btn-style d-none d-lg-block btn-style ms-2">Sign in</a></li>
+                    </ul>
+
+                    <!-- //toggle switch for light and dark theme -->
+
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//Header-->
+    <!-- main-slider -->
+    <section class="w3l-main-content" id="about">
+        <div class="container">
+            <div class="row align-items-center w3l-slider-grids">
+                <div class="col-lg-6 w3l-slider-left-info pe-lg-5">
+                    <h6 class="title-subhny mb-2">We are gathered</h6>
+                    <h3 class="mb-2 title"> <span>For</span> Your </h3>
+                    <h3 class="mb-4 title">Votesphere</h3>
+                    <p class="w3banr-p">where every vote shapes the future!</p>
+                    <div class="w3l-buttons mt-sm-5 mt-4">
+                        <a class="btn btn-primary btn-style me-2" href={% url 'voter_login' %}>Vote now</a>
+                        <a class="btn btn-outline-primary btn-style " href="#about">Learn more</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 w3l-slider-right-info mt-lg-0 mt-5 ps-lg-5 align-items-center">
+                    <div class="w3l-main-slider banner-slider">
+
+                                <div class="slider-info">
+                                    <div class=" banner-top1">
+                                        <img src="{% static 'images/banner11.jpg' %}" alt="" class="radius-image img-fluid">
+                                    </div>
+                                </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /main-slider -->
+    <section class="w3l-grids-3 py-5">
+        <div class="container py-md-5 py-3">
+            <div class="row align-items-center">
+                <div class="col-lg-6 header-sec">
+                    <h6 class="title-subhny mb-2">VoteSphere </h6>
+                    <h3 class="title-w3l">
+                        Powering the Future of College Elections!
+                    </h3>
+                </div>
+                <div class="col-lg-6 header-sec-paraw3 ps-lg-4">
+                    <p class="">VoteSphere is your trusted platform for a seamless and transparent election experience. Just as a strong leader defines the future, your vote defines the leadership.</p>
+                </div>
+            </div>
+            <div class="row bottom_grids text-left mt-lg-5 align-items-center">
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="grid-block">
+                        <a href="#grids" class="d-block">
+                            <div class="grid-block-infw3">
+                                <div class="grid-block-icon"><span class="fas fa-user-shield"></span></div>
+                                <h4 class="my-3">Great Support.</h4>
+                            </div>
+                            <p class="">Our team ensures a smooth and hassle-free election process. From registration to results, we’re here to help every step of the way.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="grid-block active">
+                        <a href="#grids" class="d-block">
+                            <div class="grid-block-infw3">
+                                <div class="grid-block-icon"><span class="far fa-edit"></span></div>
+                                <h4 class="my-3">User-Friendly Design</h4>
+                            </div>
+                            <p class="">A seamless, intuitive, and mobile-friendly platform that makes voting simple and accessible for all students.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="grid-block">
+                        <a href="#grids" class="d-block">
+                            <div class="grid-block-infw3">
+                                <div class="grid-block-icon"><span class="fas fa-signal" aria-hidden="true"></span></div>
+
+                                <h4 class="my-3">
+                                    Secure & Transparent</h4>
+                            </div>
+                            <p class="">Built with top-tier security and transparency to ensure a fair election where every vote is counted accurately.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-->
+    <!--/circles-section-->
+    <section class="w3l-circles-sec" id="circle">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-3">
+                <!--/row-2-->
+                <div class="w3l-circles">
+                    <div class="w3l-circles-infhny">
+                        <div class="title-content text-left">
+                            <h6 class="title-subhny mb-2">Shape the Future with VoteSphere</h6>
+                            <h3 class="title-w3l two">IInnovative & Transparent Elections
+
+                            </h3>
+                        </div>
+                        <p class="mt-md-4 mt-3">VoteSphere brings a modern approach to college elections, making the voting process seamless, secure, and engaging. With a sleek design and user-friendly interface, we ensure that every student can participate effortlessly.</p>
+                    
+                    </div>
+                </div>
+                <!--//row-2-->
+
+            </div>
+        </div>
+    </section>
+    <!--//circles-section-->
+    <!--/img-grids-->
+    <section class="w3l-img-grids" id="signin">
+        <div class="blog py-5" id="classes">
+            <div class="container py-lg-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
+                        <div class="w3img-grids-info">
+                            <div class="w3img-grids-info-gd position-relative">
+                                <a href="{% url 'login_manager' %}">
+                                    <div class="page">
+                                        <div class="photobox photobox_triangular photobox_scale-rotated">
+                                            <div class="photobox__previewbox media-placeholder">
+                                                <img class="img-fluid photobox__preview media-placeholder__media radius-image" src="{% static 'images/admin.png' %}" alt="">
+                                            </div>
+                                            <div class="photobox__info-wrapper">
+                                                <div class="photobox__info"><span>Login as admin</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="w3img-grids-info-gd-content mt-4">
+                                    <a href="/login_manager/" class="titile-img d-block">
+                                        <h4 class="mb-2">
+                                            Admin</h4>
+                                    </a>
+                                    <p class="">Authorized admins can oversee the election process, manage candidates, and ensure a fair voting experience with ease.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
+                        <div class="w3img-grids-info">
+                            <div class="w3img-grids-info-gd position-relative">
+                                <a href="{% url 'election_officer_login' %}">
+                                    <div class="page">
+
+                                        <div class="photobox photobox_triangular photobox_scale-rotated">
+                                            <div class="photobox__previewbox media-placeholder">
+                                                <img class="img-fluid photobox__preview media-placeholder__media radius-image" src="{% static 'images/officer.png' %}" alt="">
+                                            </div>
+                                            <div class="photobox__info-wrapper">
+                                                <div class="photobox__info"><span>Login as Election Officer </span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <div class="w3img-grids-info-gd-content mt-4">
+                                    <a href="{% url 'election_officer_login' %}" class="titile-img d-block">
+                                        <h4 class="mb-2">
+                                            Election Officer</h4>
+                                    </a>
+                                    <p class="">Election officers ensure fairness, verify votes, and uphold the integrity of the entire election system.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
+                        <div class="w3img-grids-info">
+                            <div class="w3img-grids-info-gd position-relative">
+                                <a href="{% url 'presiding_officer_login' %}">
+                                    <div class="page">
+                                        <div class="photobox photobox_triangular photobox_scale-rotated">
+                                            <div class="photobox__previewbox media-placeholder">
+                                                <img class="img-fluid photobox__preview media-placeholder__media radius-image" src="{% static 'images/presiding_officer.png' %}" alt="">
+                                            </div>
+                                            <div class="photobox__info-wrapper">
+                                                <div class="photobox__info"><span>Login as Presiding Officer</span></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="w3img-grids-info-gd-content mt-4">
+                                    <a href="{% url 'presiding_officer_login' %}" class="titile-img d-block">
+                                        <h4 class="mb-2">
+                                            presiding officer login</h4>
+                                    </a>
+                                    <p class="">Presiding officers can monitor voting, resolve issues, and ensure a smooth and transparent election process.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//img-grids->
+   
+    <!--/video-section-->
+    
+    <!--//video-section-->
+
+    <!--/tabs-faqs-->
+    <section class="w3l-products w3l-faq-block py-5" id="help">
+        <div class="container py-md-5 py-2">
+            <div class="header-secw3 text-center mb-5">
+                <h6 class="title-subhny mb-2">faqs</h6>
+                <h3 class="title-w3l mb-4">Ask Your Questions
+
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mx-auto pe-lg-5">
+                    <div class="w3hny-business-img">
+                        <img src="{% static 'images/election.png' %}" alt="" class="img-fluid radius-image">
+                    </div>
+
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-sm-5 mt-4">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button id="accordion-button-1" aria-expanded="true"><span class="accordion-title">How Do I Cast My Vote?</span><span class="icon" aria-hidden="true"></span></button>
+                            <div class="accordion-content">
+                                <p>Log in with your credentials, explore the candidates, and submit your vote with just a click. Your choice matters!</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">How to Choose the Right Candidate?</span><span class="icon" aria-hidden="true"></span></button>
+                            <div class="accordion-content">
+                                <p>Review candidate profiles, analyze their plans, and select the leader who represents your values.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">How to Check Election Results?</span><span class="icon" aria-hidden="true"></span></button>
+                            <div class="accordion-content">
+                                <p>Once voting ends, the admin verifies and publishes the results. Stay tuned for real-time updates on VoteSphere!</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Why Should I Participate in the Election?</span><span class="icon" aria-hidden="true"></span></button>
+                            <div class="accordion-content">
+                                <p>Every vote contributes to a better student community. Be a part of the decision-making process!</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//tabs-faqs-->
+
+    <!-- testimonials -->
+    
+    <!-- //testimonials -->
+    <!--/w3l-project-->
+    {% comment %} <section class="w3l-project-main">
+        <div class="container">
+            <div class="w3l-project py-md-5 py-4">
+                <div class="row py-5 align-items-center">
+                    <div class="col-lg-6 w3l-project-right">
+                        <div class="bottom-info">
+                            <div class="header-section pr-lg-5">
+                                <h6 class="title-subhny mb-2">Stay Update!</h6>
+                                <h3 class="title-w3l">Subscribe to our newsletter
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 w3l-project-left">
+                        <form action="#" method="post" class="subscribe-wthree mt-lg-5 mt-4">
+                            <div class="flex-wrap subscribe-wthree-field">
+                                <input class="form-control" type="email" placeholder="Your Email Address" name="email" required="">
+                                <button class="btn btn-style btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    <!--//w3l-project-->
+    <!-- footer -->
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-1 pe-lg-5">
+                        <div class="footer-logo mb-4">
+                            <h2><a class="navbar-brand" href={% url 'index' %}>
+                                    <span class="sublog">Vote</span>Sphere
+                                </a></h2>
+                        </div>
+                        <p>VoteSphere ensures a fair, seamless, and accessible voting experience, empowering students to shape their leadership with confidence.
+
+                        </p>
+                        <div class="w3l-two-buttons mt-4">
+                            <a href="#signin" class="btn btn-primary btn-style"> Signin </a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-6  footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">SignIn</h6>
+                        <ul>
+                            <li><a href="{% url 'voter_login' %}">voter</a></li>
+                            <li><a href="{% url 'election_officer_login' %}">Election Officer</a></li>
+                            <li><a href="{% url 'presiding_officer_login' %}">Presiding Officer</a></li>
+                            <li><a href="{% url 'login_manager' %}">Election Admin</a></li>
+
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <section class="w3l-copyright text-center">
+            <div class="container">
+                <p class="copy-footer-29">© 2024 Votesphere. All rights reserved. Design by <a href="">
+                        zaheermv</a></p>
+            </div>
+
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                <span class="fas fa-arrow-up"></span>
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+
+            </script>
+            <!-- /move top -->
+        </section>
+        <!-- //copyright -->
+    </section>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- Template JavaScript -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/theme-change.js' %}"></script>
+     <script src="{% static 'jquery-1.9.1.min.js' %}"></script>
+    <!-- faq -->
+    <script>
+        const items = document.querySelectorAll(".accordion button");
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute('aria-expanded');
+
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute('aria-expanded', 'false');
+            }
+
+            if (itemToggle == 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+    </script>
+    <!-- //faq -->
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+
+    <!-- //bootstrap -->
+    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

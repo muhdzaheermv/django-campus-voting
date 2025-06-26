@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+
+    <h2>Manager Profile</h2>
+
+    {% if manager.profile_picture %}
+        <img src="{{ manager.profile_picture.url }}" width="150" height="150" alt="Profile Picture"><br>
+    {% else %}
+        <p>No profile picture</p>
+    {% endif %}
+
+    <p><strong>Full Name:</strong> {{ manager.fullname }}</p>
+    <p><strong>Username:</strong> {{ manager.username }}</p>
+    <p><strong>Phone:</strong> {{ manager.phone_number }}</p>
+    <p><strong>Email:</strong> {{ manager.email }}</p>
+    <p><strong>Address:</strong> {{ manager.address }}</p>
+
+    <a href="/manager/{{ manager.id }}/profile/edit/">Edit Profile</a>
+    <a href="/manager/{{ manager.id }}/dashboard/">
+        <button>Back to Dashboard</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/manager_login.css' %}">
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+        <div class="form">
+            <div class="title">Election Admin</div>
+            <div class="subtitle">Login</div>
+            <div class="input-container ic1">
+              <input class="input" type="text" name="username" placeholder="" />
+              <div class="cut"></div>
+              <label for="username" class="placeholder">Username</label>
+            </div>
+            <div class="input-container ic2">
+              <input class="input" type="password" name="password" placeholder=" " />
+              <div class="cut"></div>
+              <label for="Password" class="placeholder">Password</label>
+            </div>
+            {% if error %}
+            <p style="font-family: sans-serif; margin-top: 10px; color: red; color: red;">{{ error }}</p>
+        {% endif %}
+        <button type="text" class="submit">submit</button>
+        <p style="font-family: sans-serif; margin-top: 10px; color: white; font-weight: bold;">Don't have an account? <a style="font-family: sans-serif;text-align: center; text-decoration: none; color: white;" href="{% url 'register_manager' %}">Admin</a></p>
+        <p style="font-family: sans-serif; margin-top: 10px; color: white; font-weight: bold;">Back to  <a style="font-family: sans-serif;text-align: center; text-decoration: none; color: white;" href="{% url 'index' %}">Home</a></p>
+          </div>
+        </form>
+       
+        
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,338 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Votesphere</title>
+    <!--/google-fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!--//google-fonts -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="#">
+                        <span class="sublog">vote</span>Sphere
+                    </a></h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/manager/{{ manager.id }}/dashboard/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#campaign">Manage Campaign</a>
+                        </li>
+						
+						<li class="nav-item">
+                            
+                        </li>
+                       
+                       
+
+                    </ul>
+                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                        <li class="nav-item" title="Search"><a href="#search" class="search-search">
+                                <span class="fas fa-search" aria-hidden="true"></span></a></li>
+                        <li class="nav-item me-lg-3"><a href="{% url 'logout' %}" class="phone-btn btn btn-primary btn-style d-none d-lg-block btn-style ms-2">Logout</a></li>
+                    </ul>
+
+                    <!-- //toggle switch for light and dark theme -->
+
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    
+    
+    <section class="w3l-img-grids text-white" id="campaign">
+        <div class="blog py-5" id="classes">
+            <div class="container py-lg-5">
+                <h2 class="mb-4 text-white">Availiable Elections:</h2>
+                <div class="row align-items-center">
+                   
+                    {% for campaign in campaigns %}
+                    <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
+                        <div class="w3img-grids-info">
+                            <div class="w3img-grids-info-gd position-relative">
+                                <div class="page">
+                                    <div class="photobox photobox_triangular photobox_scale-rotated">
+                                        <div class="photobox__previewbox media-placeholder">
+                                            {% if campaign.image %}
+                                            <img class="img-fluid photobox__preview media-placeholder__media radius-image" src="{{ campaign.image.url }}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="photobox__info-wrapper">
+                                            <div class="photobox__info text-white"><span>{{ campaign.name }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w3img-grids-info-gd-content mt-4">
+                                    <h5 class="mb-2 text-white">{{ campaign.name }}</h5>
+                                    <p class="text-white">{{ campaign.description }}</p>
+    
+                                    <!-- Candidate Management -->
+                                    <h5 class="mb-2 text-white">Candidate Management</h5>
+                                    <button class="btn btn-success">
+                                        <a class="text-decoration-none text-white" href="{% url 'add_candidate' campaign.id %}">Add Candidate</a>
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        <a class="text-decoration-none text-white" href="{% url 'manage_candidates' campaign.id %}">Manage Candidate</a>
+                                    </button>
+                                    <br><br>
+    
+                                    <!-- Voter Management -->
+                                    <h5 class="mb-2 text-white">Voter Management</h5>
+                                    <button class="btn btn-primary">
+                                        <a class="text-decoration-none text-white" href="/campaigns/{{ campaign.id }}/voters/upload/">Upload Voter List</a>
+                                    </button>
+                                    <button class="btn btn-info">
+                                        <a class="text-decoration-none text-white" href="/campaigns/{{ campaign.id }}/voters/">View Voter List</a>
+                                    </button>
+                                    <br><br>
+                                    <button class="btn btn-success">
+                                        <a class="text-decoration-none text-white" href="{% url 'approve_voters' campaign.id %}">Approve Voters</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+    
+                <!-- Voting Section -->
+                <div class="mt-5">
+                    <h2 class="mb-4 text-white">Vote for Your Candidate</h2>
+    
+                    <!-- ✅ Show Success or Error Messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="text-{% if message.tags == 'success' %}success{% else %}danger{% endif %} text-white">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+    
+                    {% for election in elections %}
+                        <h3 class="mb-3 text-white">{{ election.name }}</h3>
+    
+                        <form method="POST" action="{% url 'submit_vote' election.id %}" onsubmit="confirmVote(event, this)">
+                            {% csrf_token %}
+    
+                            <table class="table table-striped table-hover text-white">
+                                <thead class="bg-light text-dark">
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Candidate</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for candidate in election.candidate_set.all %}
+                                    <tr>
+                                        <td class="text-center">
+                                            <input type="radio" name="vote" value="{{ candidate.id }}" required class="form-check-input">
+                                        </td>
+                                        <td class="text-center">
+                                            <img src="{{ candidate.profile_picture.url }}" width="50" height="50" class="rounded-circle">
+                                        </td>
+                                        <td class="text-white">
+                                            <strong>{{ candidate.name }}</strong>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+    
+                            <button type="submit" class="btn btn-primary">Submit Vote</button>
+                        </form>
+                    {% endfor %}
+    
+                    <a href="{% url 'voter_login' %}">
+                        <button class="btn btn-danger mt-3" onclick="clearSections()">Voting Completed</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function confirmVote(event, form) {
+            event.preventDefault();  // Prevent form submission
+            let confirmed = confirm("Are you sure you want to submit your vote?");
+            if (confirmed) {
+                form.submit();  // If confirmed, submit the form
+            }
+        }
+    
+        function clearSections() {
+            document.body.innerHTML = ""; // Clears the entire page content
+        }
+    </script>
+    
+    
+    
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-1 pe-lg-5">
+                        <div class="footer-logo mb-4">
+                            <h2><a class="navbar-brand" href={% url 'index' %}>
+                                    <span class="sublog">Vote</span>Sphere
+                                </a></h2>
+                        </div>
+                        <p>VoteSphere ensures a fair, seamless, and accessible voting experience, empowering students to shape their leadership with confidence.
+
+                        </p>
+                        <div class="w3l-two-buttons mt-4">
+                            <a href="{% url 'logout' %}" class="btn btn-primary btn-style"> Logout </a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-6  footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">SignIn</h6>
+                        <ul>
+                            
+                            
+                            
+                           
+
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <section class="w3l-copyright text-center">
+            <div class="container">
+                <p class="copy-footer-29">© 2024 Votesphere. All rights reserved. Design by <a href="">
+                        zaheermv</a></p>
+            </div>
+
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                <span class="fas fa-arrow-up"></span>
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+
+            </script>
+            <!-- /move top -->
+        </section>
+        <!-- //copyright -->
+    </section>
+    
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/theme-change.js' %}"></script>
+     <script src="{% static 'jquery-1.9.1.min.js' %}"></script>
+
+    <script>
+        const items = document.querySelectorAll(".accordion button");
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute('aria-expanded');
+
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute('aria-expanded', 'false');
+            }
+
+            if (itemToggle == 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+    </script>
+   
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+   
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+   
+    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
+
+</body>
+
+</html>

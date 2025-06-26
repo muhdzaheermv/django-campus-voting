@@ -1,0 +1,62 @@
+<ul>
+    {% for campaign in campaigns %}
+        <li>
+            <strong>{{ campaign.name }}</strong><br>
+
+            {% if campaign.image %}
+                <img src="{{ campaign.image.url }}" width="100" height="100"><br>
+            {% endif %}
+
+            <p>{{ campaign.description }}</p>
+
+            <a href="/campaigns/edit/{{ campaign.id }}/">Edit</a>
+            <a href="/campaigns/delete/{{ campaign.id }}/">Delete</a>
+            <a href="/campaigns/{{ campaign.id }}/elections/create/">Add Election</a>
+
+            <h4>Elections:</h4>
+            <ul>
+                {% for election in campaign.election_set.all %}
+                    <li>
+                        {{ election.name }}
+                        <a href="/elections/edit/{{ election.id }}/">Edit</a>
+                        <a href="/elections/delete/{{ election.id }}/" 
+                           onclick="return confirm('Are you sure you want to delete this election?');">Delete</a>
+
+                        <!-- ✅ "Add Candidate" Button -->
+                        <a href={% url 'add_candidate' campaign.id %}>
+                            <button>Add Candidate</button>
+                        </a>
+
+                        <!-- ✅ "View Results" Button -->
+                        <a href="{% url 'election_results' election.id %}">
+                            <button style="background-color: green; color: white;">View Results</button>
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No elections added</li>
+                {% endfor %}
+            </ul>
+
+            <!-- ✅ Upload Voters Button -->
+            <a href="/campaigns/{{ campaign.id }}/voters/upload/">
+                <button>Upload Voters</button>
+            </a>
+
+            <!-- ✅ View Voters List Button -->
+            <a href="/campaigns/{{ campaign.id }}/voters/">
+                <button>View Voters List</button>
+            </a>
+
+            <!-- ✅ Approve Voters Button -->
+            <a href="{% url 'approve_voters' campaign.id %}">
+                <button style="background-color: blue; color: white;">Approve Voters</button>
+            </a>
+
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- ✅ Back Button to Dashboard -->
+<a href="/manager/{{ manager.id }}/dashboard/">
+    <button>Back to Dashboard</button>
+</a>

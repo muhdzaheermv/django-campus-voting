@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+
+    <h2>Edit Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Full Name:</label>
+        <input type="text" name="fullname" value="{{ manager.fullname }}" required><br>
+    
+        <label>Phone Number:</label>
+        <input type="text" name="phone_number" value="{{ manager.phone_number }}" required><br>
+    
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ manager.email }}" required><br>
+    
+        <label>Address:</label>
+        <textarea name="address" required>{{ manager.address }}</textarea><br>
+    
+        <label>Profile Picture:</label>
+        <input type="file" name="profile_picture"><br>
+    
+        <button type="submit">Update Profile</button>
+    </form>
+
+    <a href="/manager/{{ manager.id }}/dashboard/">
+        <button>Back to Dashboard</button>
+    </a>
+    
+
+</body>
+</html>

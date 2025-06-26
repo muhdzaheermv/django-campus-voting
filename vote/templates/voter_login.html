@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/voter_login.css' %}">
+    </head>
+    <body>
+        <form method="POST" action="/voter/login/">
+            {% csrf_token %}
+        <div class="form">
+            <div class="title">Voter Login</div>
+            <div class="subtitle">Enter Your Id</div>
+            <div class="input-container ic1">
+                <input name="student_id" class="input" type="text" placeholder=" " />
+                <div class="cut"></div>
+                <label for="firstname" class="placeholder">Voter Id</label>
+                {% if error %}
+                    <p style="font-family: sans-serif; margin-top: 10px; color: red; color: red;">{{ error }}</p>
+                {% endif %}
+    
+                {% if messages %}
+                {% for message in messages %}
+                    <div style="font-family: sans-serif; margin-top: 10px; color: red; font-weight: bold;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            
+            <button type="text" class="submit">Login</button>
+            <a style="font-family: sans-serif;text-align: center; text-decoration: none; color: white;" href="{% url 'index' %}">Home</a>
+        </form>
+          </div>
+       
+        
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,271 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Votesphere</title>
+    <!--/google-fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!--//google-fonts -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+</head>
+
+<body>
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1><a class="navbar-brand pe-xl-5 pe-lg-4" href="#">
+                        <span class="sublog">vote</span>Sphere
+                    </a></h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#campaign">Manage Campaign</a>
+                        </li>
+						
+						<li class="nav-item">
+                            
+                        </li>
+                       
+                       
+
+                    </ul>
+                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                        <li class="nav-item" title="Search"><a href="#search" class="search-search">
+                                <span class="fas fa-search" aria-hidden="true"></span></a></li>
+                        <li class="nav-item me-lg-3"><a href="{% url 'logout' %}" class="phone-btn btn btn-primary btn-style d-none d-lg-block btn-style ms-2">Logout</a></li>
+                    </ul>
+
+                    <!-- //toggle switch for light and dark theme -->
+
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    
+    <section class="w3l-main-content" id="about">
+        <div class="container">
+            <div class="row align-items-center w3l-slider-grids">
+                <div class="col-lg-6 w3l-slider-left-info pe-lg-5">
+                    <h6 class="title-subhny mb-2">Welcome {{ officer.fullname }}</h6>
+                    <h3 class="mb-2 title"> <span>to</span> the </h3>
+                    <h3 class="mb-4 title">Votesphere</h3>
+                    <p class="w3banr-p">Oversee elections, manage candidates, and ensure fair voting!</p>
+                    <div class="w3l-buttons mt-sm-5 mt-4">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-6 w3l-slider-right-info mt-lg-0 mt-5 ps-lg-5 align-items-center">
+                    <div class="w3l-main-slider banner-slider">
+
+                                <div class="slider-info">
+                                    <div class=" banner-top1">
+                                        <img src="{% static 'images/presiding_officer.png' %}" alt="" class="radius-image img-fluid">
+                                    </div>
+                                </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section class="w3l-img-grids" id="campaign">
+        <div class="blog py-5" id="classes">
+            <div class="container py-lg-5">
+                <h2 class="mb-4">Campaigns You Can Manage:</h2>
+                <div class="row align-items-center">
+                    {% if campaigns %}
+                    {% for campaign in campaigns %}
+                    <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
+                        <div class="w3img-grids-info">
+                            <div class="w3img-grids-info-gd position-relative">
+                                <div class="page">
+                                    <div class="photobox photobox_triangular photobox_scale-rotated">
+                                        <div class="photobox__previewbox media-placeholder">
+                                            {% if campaign.image %}
+                                            <img class="img-fluid photobox__preview media-placeholder__media radius-image" src="{{ campaign.image.url }}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="photobox__info-wrapper">
+                                            <div class="photobox__info"><span>{{ campaign.name }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w3img-grids-info-gd-content mt-4">
+                                    <h5 class="mb-2">{{ campaign.name }}</h5>
+                                    <p>{{ campaign.description }}</p>
+
+                                    <!-- Candidate Management -->
+                                   
+                                    <!-- Voter Management -->
+                                    <h5 class="mb-2">Voter Management</h5>
+                                    <button class="btn btn-success"><a class="text-decoration-none text-white" href="{% url 'approve_voters' campaign.id %}">Approve Voters</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>No campaigns assigned to you.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-1 pe-lg-5">
+                        <div class="footer-logo mb-4">
+                            <h2><a class="navbar-brand" href={% url 'index' %}>
+                                    <span class="sublog">Vote</span>Sphere
+                                </a></h2>
+                        </div>
+                        <p>VoteSphere ensures a fair, seamless, and accessible voting experience, empowering students to shape their leadership with confidence.
+
+                        </p>
+                        <div class="w3l-two-buttons mt-4">
+                            <a href="{% url 'logout' %}" class="btn btn-primary btn-style"> Logout </a>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <section class="w3l-copyright text-center">
+            <div class="container">
+                <p class="copy-footer-29">© 2024 Votesphere. All rights reserved. Design by <a href="">
+                        zaheermv</a></p>
+            </div>
+
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                <span class="fas fa-arrow-up"></span>
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+
+            </script>
+            <!-- /move top -->
+        </section>
+        <!-- //copyright -->
+    </section>
+    
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/theme-change.js' %}"></script>
+     <script src="{% static 'jquery-1.9.1.min.js' %}"></script>
+
+    <script>
+        const items = document.querySelectorAll(".accordion button");
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute('aria-expanded');
+
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute('aria-expanded', 'false');
+            }
+
+            if (itemToggle == 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+    </script>
+   
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+   
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+   
+    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
+
+</body>
+
+</html>
