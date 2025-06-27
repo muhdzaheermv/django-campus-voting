@@ -11,41 +11,35 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+
 import dj_database_url
+
+
 import os
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# ===============================
-# LOCAL DEVELOPMENT CONFIGURATION
-# ===============================
-# Uncomment the following lines to run the project locally
-
-
-# SECRET_KEY = 'django-insecure-t^=2p7g*^k$1*4zw5uks8s0a53#9k929zc%gkpjissl47_x+$e'
-
-# DEBUG = True
-
-# ALLOWED_HOSTS = []
-
-# ===============================
-# LOCAL DEVELOPMENT CONFIGURATION
-# ===============================
-# ❌ Comment out the Render deployment section below when running locally
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split("")
+
+SECRET_KEY = 'django-insecure-t^=2p7g*^k$1*4zw5uks8s0a53#9k929zc%gkpjissl47_x+$e'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -57,6 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    'vote'
+
 ]
 
 MIDDLEWARE = [
@@ -70,12 +68,19 @@ MIDDLEWARE = [
 ]
 
 
+
+
+
 ROOT_URLCONF = 'votesphere.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
         'DIRS': [],
+
+        'DIRS': [BASE_DIR / "vote/templates"],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,11 +106,14 @@ DATABASES = {
     }
 }
 
+
 database_url = os.environ.get("DATABASE_URL")
 DATABASES['default'] = dj_database_url.parse(database_url)
 
 # postgresql://votesphere_django_render_5eb9_user:sUIyYNQx1IHl2Vs7rMrxbVL74kODlpYI@dpg-d1d23a95pdvs73a91abg-a.oregon-postgres.render.com/votesphere_django_render_5eb9
 # 'django-insecure-ym3pjs*rau+b*8@ra&wxlkj*w1nkzzdr-ju(qc)@cdh2wofzxo'
+
+
 
 
 # Password validation
@@ -139,10 +147,24 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
 STATIC_URL = 'static/'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "vote/static"]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
