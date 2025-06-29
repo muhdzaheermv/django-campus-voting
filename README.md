@@ -1,6 +1,6 @@
 # 🗳️ VoteSphere – Django-Based Campus E-Voting System
 
-![Homepage](./src/assets/images/homepage.png)
+![Homepage](./vote/static/images/vp.png)
 
 **VoteSphere** is a secure and dynamic **Campus E-Voting Platform** developed using **Django (Python)** along with **HTML, CSS, JavaScript, and Bootstrap**. It features multi-role authentication and functionality for **Admins**, **Election Officers**, **Presiding Officers**, and **Voters**, making it a full-stack, role-based voting solution for institutional needs.
 
