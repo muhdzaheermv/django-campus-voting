@@ -2,52 +2,59 @@
 
 ![Homepage](./src/assets/images/homepage.png)
 
-**VoteSphere** is a secure, role-based **Campus E-Voting System** built with **Django (Python)** for the backend and **HTML, CSS, JS, Bootstrap** for the frontend. It features real-time voting, Excel voter upload, admin control, and vote integrity via automatic logout after submission.
+**VoteSphere** is a secure and dynamic **Campus E-Voting Platform** developed using **Django (Python)** along with **HTML, CSS, JavaScript, and Bootstrap**. It features multi-role authentication and functionality for **Admins**, **Election Officers**, **Presiding Officers**, and **Voters**, making it a full-stack, role-based voting solution for institutional needs.
 
 ## 🚀 Live Demo
 
-👉 [Live App](https://django-campus-voting.onrender.com/)
+👉 [Click here to view the live app](https://django-campus-voting.onrender.com/)
+
+---
 
 ## 🛠️ Tech Stack
 
 - **Backend:** Django (Python)
 - **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
-- **Libraries:** pandas, openpyxl, re, Django Auth, Excel handling
+- **Libraries Used:**
+  - `pandas`
+  - `openpyxl`
+  - `re`
+  - `Django Authentication System`
 
 ---
 
 ## 👨‍💼 Admin Module Features
 
-- Create & manage election campaigns and positions
+- Create & manage election campaigns
+- Define positions (e.g., President, Secretary)
 - Add/manage candidates
 - Upload voter list via Excel
-- View and approve eligible voters
-- Appoint Election Officers and Presiding Officers
-- View **Live Election Results**
+- Review and approve voter eligibility
+- Assign Election & Presiding Officers
+- Monitor **Live Election Results**
 - Manage admin profile and settings
 
 ---
 
 ## 🧑‍💻 Election Officer Module
 
-- Add and manage candidate data
-- Upload and edit voter lists
-- Manage voter records
+- Add/manage candidates
+- Upload and manage voter list
+- Edit voter records
 
 ---
 
 ## 🧑‍⚖️ Presiding Officer Module
 
 - Review eligible voters
-- Approve or disapprove voter applications
+- Approve/disapprove voter status
 
 ---
 
 ## 🗳️ Voter Module
 
-- Secure login with Student ID
-- View elections and cast **one vote only**
-- Automatic logout after voting
+- Login with Student ID
+- View elections & cast vote (one vote only)
+- Auto logout after voting for vote integrity
 
 ---
 
@@ -61,7 +68,13 @@
 
 ---
 
-## ⚙️ Key Python Libraries & Snippets
+## 📸 Screenshot
+
+![Homepage](./src/assets/images/homepage.png)
+
+---
+
+## 📁 Sample Code Snippet
 
 ```python
 import pandas as pd
