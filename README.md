@@ -63,7 +63,7 @@
 
 | Role              | Username / Email | Password    |
 | ----------------- | ---------------- | ----------- |
-| Admin             | `admin`          | `Pass@1234` |
+| Election Manager  | `manager`          | `Pass@1234` |
 | Election Officer  | `officer`        | `Pass@1234` |
 | Presiding Officer | `officer`        | `Pass@1234` |
 
